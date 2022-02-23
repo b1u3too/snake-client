@@ -14,6 +14,11 @@ const connect = function () {
     console.log(data);
   })
 
+  conn.on("connect", () => {
+    console.log("You've successfully connected to the game!");
+    conn.write("Name: ALM");
+  })
+
   return conn;
 };
 
