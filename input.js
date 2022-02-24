@@ -2,7 +2,7 @@ let connection;
 const constants = require('./constants');
 
 // setup interface to handle user input from stdin
-const setupInput = function (conn) {
+const setupInput = function(conn) {
   connection = conn;
 
   const stdin = process.stdin;
@@ -25,19 +25,20 @@ const handleUserInput = function(input) {
     process.exit();
   }
 
+  //if keypresses are bound to move or chat bindings, send to server
   checkBindings(movementBindings, key, "Move");
   checkBindings(chatBindings, key, "Say");
 
 };
 
 //helper function to send items bound to server commands to the server
-const checkBindings = function (bindingsObject, input, serverKeyword) {
+const checkBindings = function(bindingsObject, input, serverKeyword) {
   for (const property in bindingsObject) {
     if (bindingsObject[property] === input) {
       connection.write(serverKeyword + ": " + property);
     }
   }
-}
+};
 
 module.exports = {
   setupInput
