@@ -20,22 +20,24 @@ const handleUserInput = function(input) {
   const movementBindings = constants.MOVEMENT_BINDINGS;
   const chatBindings = constants.CHAT_BINDINGS;
 
+  //if keypress is ctrl+c, exit process
   if (key === '\u0003') {
     process.exit();
   }
 
-  for (const direction in movementBindings) {
-    if (movementBindings[direction] === key) {
-      connection.write(`Move: ${direction}`);
-    }
-  }
+  checkBindings(movementBindings, key, "Move");
+  checkBindings(chatBindings, key, "Say");
 
-  for (const message in chatBindings) {
-    if (chatBindings[message] === key) {
-      connection.write(`Say: ${message}`);
+};
+
+//helper function to send items bound to server commands to the server
+const checkBindings = function (bindingsObject, input, serverKeyword) {
+  for (const property in bindingsObject) {
+    if (bindingsObject[property] === input) {
+      connection.write(serverKeyword + ": " + property);
     }
   }
-};
+}
 
 module.exports = {
   setupInput
