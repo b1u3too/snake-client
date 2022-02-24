@@ -16,8 +16,7 @@ const setupInput = function (conn) {
 };
 
 const handleUserInput = function(input) {
-  const key = input.toLowerCase();   
-  console.log(`key pressed: ${key}`);
+  const key = input.toLowerCase();
   const movementBindings = constants.MOVEMENT_BINDINGS;
   const chatBindings = constants.CHAT_BINDINGS;
 
