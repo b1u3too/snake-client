@@ -22,7 +22,6 @@ const handleUserInput = function(input) {
     down: 's',
     right: 'd'
   }
-  console.log("key pressed: ", key);
 
   if (key === '\u0003') {
     process.exit();
@@ -30,8 +29,7 @@ const handleUserInput = function(input) {
 
   for (const direction in movementBindings) {
     if (movementBindings[direction] === (key)) {
-      console.log(`SENDING: Move: ${direction}`);
-      return `Move: ${direction}`;
+      connection.write(`Move: ${direction}`);
     }
   }
 };
