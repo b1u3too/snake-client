@@ -22,14 +22,26 @@ const handleUserInput = function(input) {
     down: 's',
     right: 'd'
   }
+  const chatBindings = {
+    howdy: 'h',
+    snek: 'e',
+    teehee: 't',
+    byeeeee: 'b',
+  }
 
   if (key === '\u0003') {
     process.exit();
   }
 
   for (const direction in movementBindings) {
-    if (movementBindings[direction] === (key)) {
+    if (movementBindings[direction] === key) {
       connection.write(`Move: ${direction}`);
+    }
+  }
+
+  for (const message in chatBindings) {
+    if (chatBindings[message] === key) {
+      connection.write(`Say: ${message}`);
     }
   }
 };
