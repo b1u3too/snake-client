@@ -13,13 +13,13 @@ const CHAT_BINDINGS = {
   byeeeee: 'b',
 };
 const USERNAME = 'ALM';
-const ENCODING = 'utf8'
+const ENCODING = 'utf8';
 
 module.exports = {
   IP,
   PORT,
   MOVEMENT_BINDINGS,
-  CHAT_BINDINGS, 
-  USERNAME, 
+  CHAT_BINDINGS,
+  USERNAME,
   ENCODING
 };
