@@ -1,4 +1,5 @@
 let connection;
+const constants = require('./constants');
 
 // setup interface to handle user input from stdin
 const setupInput = function (conn) {
@@ -6,7 +7,7 @@ const setupInput = function (conn) {
 
   const stdin = process.stdin;
   stdin.setRawMode(true);
-  stdin.setEncoding("utf8");
+  stdin.setEncoding(constants.ENCODING);
   stdin.resume();
 
   stdin.on("data", handleUserInput);
@@ -16,18 +17,9 @@ const setupInput = function (conn) {
 
 const handleUserInput = function(input) {
   const key = input.toLowerCase();   
-  const movementBindings = {
-    up: 'w',
-    left: 'a',
-    down: 's',
-    right: 'd'
-  }
-  const chatBindings = {
-    howdy: 'h',
-    snek: 'e',
-    teehee: 't',
-    byeeeee: 'b',
-  }
+  console.log(`key pressed: ${key}`);
+  const movementBindings = constants.MOVEMENT_BINDINGS;
+  const chatBindings = constants.CHAT_BINDINGS;
 
   if (key === '\u0003') {
     process.exit();
